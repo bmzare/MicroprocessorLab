@@ -4,11 +4,14 @@
 #include <avr/delay.h>
 
 int main() {
+    DDRA = 0;
     DDRB = 0xFF;
 
     while (true) {
-        PORTB ^= 0xFF;
-        _delay_ms(500); 
+        if ((PINA & 1) == 1) {
+            PORTB ^= 0xFF;
+            _delay_ms(500);
+        }
     }
     return 0;
 }
