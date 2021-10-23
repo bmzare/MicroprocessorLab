@@ -36,20 +36,21 @@ ISR(TIMER2_OVF_vect)
         counter();
 
         LCD_Command(0x01);
+
         char hourD = hour;
         char minuteD = minute;
         char secondD = second;
 
-        if (trunc(log10(hour)) + 1) 
+        if (trunc(log10(hour)) + 1)
         {
             hourD = "0" + hour;
         }
-        
+
         if (trunc(log10(minute)) + 1)
         {
             minuteD = "0" + minute;
         }
-        
+
         if (trunc(log10(second)) + 1)
         {
             secondD = "0" + second;
@@ -61,11 +62,11 @@ ISR(TIMER2_OVF_vect)
 int main()
 {
     DDRB = 0xFF;
-    DDRA = 0xE0;
+    DDRD = 0xE0;
     init_LCD();
     LCD_Command(0x0C);
 
-    // timer 2  
+    // timer 2
     TIMSK = (1 << TOIE2);
     TCCR2 = (1 << CS20);
     sei();
