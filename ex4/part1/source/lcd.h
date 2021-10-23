@@ -77,7 +77,7 @@ void init_LCD(void)
 
 {
 
-	LCD_Command(0x38);           // initialization in 8bit mode of 16X2 LCD
+	LCD_Command(0x38);           // initialization in 8bit mode of 32X2 LCD
 
 	_delay_ms(1);
 
